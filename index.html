@@ -1,0 +1,70 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux File Permissions Project</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<h1>File Permissions in Linux</h1>
+
+<!--Introduction-->
+
+<h2>Project Description</h2>
+<p>For this project I interacted with Linux file permissions to manage the authorizations within the <code>/home/researcher2/projects</code> directory. I practiced checking file and directory details, interpreting Linux permission strings, and modifying permissions with the <code>chmod</code> command.</p>
+
+
+
+<h2>Check File and Directory Details</h2>
+<p>Command used:</p>
+<!--code is essentially just creating a section so that the repeated element can be styled on the css-->
+<code>ls -la projects</code>
+<p>This shows hidden files, directory contents, permissions, owner, group, size, and timestamps.</p>
+
+<!--start of tables section-->
+<h2>Permissions</h2>
+<!--<table> indicates the element, <tr> indicates a row, <th> indicates a header cell, and <td> indicates data in the cell-->
+<table>
+<tr><th>File/Dir</th><th>Permissions</th><th>Owner</th><th>Group</th></tr>
+<tr><td>project_k.txt</td><td>-rw-rw-rw-</td><td>researcher2</td><td>research_team</td></tr>
+<tr><td>project_m.txt</td><td>-rw-r-----</td><td>researcher2</td><td>research_team</td></tr>
+<tr><td>project_r.txt</td><td>-rw-rw-r--</td><td>researcher2</td><td>research_team</td></tr>
+<tr><td>project_t.txt</td><td>-rw-rw-r--</td><td>researcher2</td><td>research_team</td></tr>
+<tr><td>.project_x.txt</td><td>-rw-w-----</td><td>researcher2</td><td>research_team</td></tr>
+<tr><td>drafts (dir)</td><td>drwx--x---</td><td>researcher2</td><td>research_team</td></tr>
+</table>
+
+<!--the use of <br> gives some spacing between the lines-->
+<h3>Example Breakdown (project_t.txt)</h3>
+<p>- First character (-) = regular file<br>
+- Next three (rw-) = user can read and write<br>
+- Next three (rw-) = group can read and write<br>
+- Last three (---) = others have no permissions</p>
+
+
+<h2>Change File Permissions</h2>
+<p>For project_k.txt, remove write for others:</p>
+<code>chmod o-w /home/researcher2/projects/project_k.txt</code>
+
+
+<h2>Hidden File Permissions</h2>
+<p>For .project_x.txt, read-only for user and group:</p>
+<code>chmod 440 /home/researcher2/projects/.project_x.txt</code>
+<p>or</p>
+<code>chmod u-w /home/researcher2/projects/.project_x.txt</code>
+
+
+<h2>Directory Permissions</h2>
+<p>For drafts directory, full access only for user:</p>
+<code>chmod 700 /home/researcher2/projects/drafts</code>
+<p>or</p>
+<code>chmod u=rwx,g=,o= /home/researcher2/projects/drafts</code>
+
+
+<h2>Summary</h2>
+<p>In this project, I reviewed file and directory permissions, updated them to meet security requirements, secured hidden files, and restricted directories to the owner.</p>
+</body>
+</html>
